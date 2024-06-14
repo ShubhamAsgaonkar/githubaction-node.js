@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: docker build
-        run: docker build -t shubhamasgaonkar/hellonode:latest .
+        run: sudo docker build -t shubhamasgaonkar/hellonode:latest .
 
       - name: pushing docker image
         run: |
