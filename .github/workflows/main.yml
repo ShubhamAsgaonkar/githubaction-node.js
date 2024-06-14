@@ -1,0 +1,34 @@
+name: aws-asignment
+on:
+  push:
+    branches:
+    - main
+jobs:
+     build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
+      - name: checkout
+        uses: actions/checkout@v1
+        
+      - name: Install docker
+      
+        run: |
+             sudo apt update
+             sudo yum install docker -y  # Install Docker if not already present (adjust based on package manager)
+             sudo systemctl start docker 
+
+      - name: Login to docker hub
+        uses: docker/login-action@v3.2.0
+        with:
+            username: ${{ secrets.username }}
+            password: ${{ secrets.password }}
+
+      - name: docker build
+        run: docker build -t shubhamasgaonkar/hellonode:latest
+
+      - name: pushing docker image
+        run: |
+         docker push shubhamasgaonkar/hellonode:latest
+
+      - name: running docker image
+        run: docker run -d --name my-hello-world shubhamasgaonkar/hellonode:latest
