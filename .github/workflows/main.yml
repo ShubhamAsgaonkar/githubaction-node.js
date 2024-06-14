@@ -24,11 +24,12 @@ jobs:
             password: ${{ secrets.password }}
 
       - name: docker build
-        run: docker build -t shubhamasgaonkar/hellonode:latest
+        run: sudo docker build -t shubhamasgaonkar/hellonode:latest
 
       - name: pushing docker image
         run: |
-         docker push shubhamasgaonkar/hellonode:latest
+         sudo docker push shubhamasgaonkar/hellonode:latest
 
       - name: running docker image
-        run: docker run -d --name my-hello-world shubhamasgaonkar/hellonode:latest
+        run: sudo docker run -d -p 80:80 --name my-hello-world shubhamasgaonkar/hellonode:latest
+
