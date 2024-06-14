@@ -13,8 +13,8 @@ jobs:
       - name: docker build
         run: sudo docker build -t shubhamasgaonkar/hellonode:latest .
 
-      - name: running docker image
-        run: sudo docker login -u ${{ secrets.username }} -p ${{ secrets.password }}
+      - name: DOCKER LOGIN
+        run: sudo docker login -u shubhamasgaonkar -p *iEMN00etfWx
 
       - name: pushing docker image
         run: |
