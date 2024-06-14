@@ -9,13 +9,6 @@ jobs:
       steps:
       - name: checkout
         uses: actions/checkout@v1
-        
-      - name: Install docker
-      
-        run: |
-             sudo apt update
-             sudo yum install docker -y  # Install Docker if not already present (adjust based on package manager)
-             sudo systemctl start docker 
 
       - name: Login to docker hub
         uses: docker/login-action@v3.2.0
