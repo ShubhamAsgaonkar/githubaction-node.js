@@ -1,16 +1,17 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/azurerm"
-      version = "5.53.0"
+      source  = "hashicorp/aws"
+      version = "~> 5.53.0"
     }
   }
 }
 
+# Configure the AWS Provider
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
   access_key = var.aws-access_key
-  secret_key = var.aws-secret_key
+  secret_key =  var.aws-secret_key
 }
 
 resource "aws_instance" "web" {
